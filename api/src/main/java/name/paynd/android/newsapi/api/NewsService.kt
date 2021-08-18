@@ -11,22 +11,22 @@ import retrofit2.http.GET
 interface NewsService {
 
     @GET("/v2/top-headlines/sources")
-    fun sources(): SourcesList
+    suspend fun sources(): SourcesList
 }
 
-@ExperimentalSerializationApi
 fun NewsService(apiKey: String): NewsService {
     val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
             val authRequest = chain
                 .request()
                 .newBuilder()
-                .addHeader("apiKey", apiKey)
+                .addHeader(HEADER_API_KEY, apiKey)
                 .build()
 
             chain.proceed(authRequest)
         }
         .build()
+
     val retrofit = Retrofit.Builder()
         .baseUrl("https://newsapi.org/")
         .client(okHttpClient)

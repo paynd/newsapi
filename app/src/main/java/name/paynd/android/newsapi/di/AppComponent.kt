@@ -6,11 +6,14 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import name.paynd.android.newsapi.api.NewsService
+import name.paynd.android.newsapi.sources_list.SourcesDeps
 import javax.inject.Qualifier
 import javax.inject.Scope
 
 @[AppScope Component(modules = [AppModule::class])]
-interface AppComponent {
+interface AppComponent : SourcesDeps {
+
+    override val newsService: NewsService
 
     @Component.Builder
     interface Builder {
@@ -18,13 +21,15 @@ interface AppComponent {
         fun application(application: Application): Builder
 
         @BindsInstance
-        fun apikey(apikey: String): Builder
+        fun apikey(@NewsApiQualifier apikey: String): Builder
+
         fun build(): AppComponent
     }
 }
 
 @Module
 class AppModule {
+
     @Provides
     @AppScope
     fun provideNewsService(@NewsApiQualifier apikey: String): NewsService {
