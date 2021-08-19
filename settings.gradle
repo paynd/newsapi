@@ -10,7 +10,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My Application"
 include ':app'
-include ':core'
 include ':feature_articles'
 include ':feature_sources'
 include ':api'
