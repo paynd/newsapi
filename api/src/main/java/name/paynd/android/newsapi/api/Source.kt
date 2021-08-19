@@ -4,8 +4,9 @@ import kotlinx.serialization.Serializable
 import java.util.*
 
 @Serializable
-data class SourcesList(
-    val sourcesList: List<Source>
+data class Sources(
+    val sources: List<Source>,
+    val status: String
 )
 
 @Serializable

@@ -1,7 +1,6 @@
 package name.paynd.android.newsapi.api
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -11,7 +10,7 @@ import retrofit2.http.GET
 interface NewsService {
 
     @GET("/v2/top-headlines/sources")
-    suspend fun sources(): SourcesList
+    suspend fun sources(): Sources
 }
 
 fun NewsService(apiKey: String): NewsService {

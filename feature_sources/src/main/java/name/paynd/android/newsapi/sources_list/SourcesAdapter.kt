@@ -28,8 +28,9 @@ class SourcesAdapter : ListAdapter<Source, SourcesAdapter.ViewHolder>(SourceItem
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(source: Source) {
-            binding.content.text = source.name
-            binding.itemNumber.text = source.id
+            binding.itemTitle.text = source.name
+            binding.itemDescription.text = source.description
+            binding.itemUrl.text = source.url
         }
     }
 
