@@ -1,12 +1,14 @@
 package name.paynd.android.newsapi
 
 import android.app.Application
+import name.paynd.android.newsapi.articles.ArticlesDeps
+import name.paynd.android.newsapi.articles.ArticlesDepsProvider
 import name.paynd.android.newsapi.di.AppComponent
 import name.paynd.android.newsapi.di.DaggerAppComponent
-import name.paynd.android.newsapi.sources_list.SourcesDeps
-import name.paynd.android.newsapi.sources_list.SourcesDepsProvider
+import name.paynd.android.newsapi.sources.SourcesDeps
+import name.paynd.android.newsapi.sources.SourcesDepsProvider
 
-class NewsApiApp : Application() , SourcesDepsProvider {
+class NewsApiApp : Application() , SourcesDepsProvider, ArticlesDepsProvider {
     private val appComponent: AppComponent by lazy {
         DaggerAppComponent
             .builder()
@@ -15,5 +17,6 @@ class NewsApiApp : Application() , SourcesDepsProvider {
             .build()
     }
 
-    override val deps: SourcesDeps = appComponent
+    override val sourcesDeps: SourcesDeps = appComponent
+    override val articlesDeps: ArticlesDeps = appComponent
 }

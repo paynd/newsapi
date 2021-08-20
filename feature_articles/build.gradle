@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -35,10 +36,23 @@ android {
 }
 
 dependencies {
-
+    implementation rootProject.ext.dependencies.lifecycleViewmodelKtx
+    implementation rootProject.ext.dependencies.lifecycleRuntimeKtx
+    implementation rootProject.ext.dependencies.recyclerview
+    implementation rootProject.ext.dependencies.kotlinxCoroutinesAndroid
+    implementation rootProject.ext.dependencies.fragmentKtx
+    implementation rootProject.ext.dependencies.dagger
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt rootProject.ext.dependencies.daggerCompiler
     implementation rootProject.ext.dependencies.coreKtx
     implementation rootProject.ext.dependencies.appCompat
     implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.splashScreen
+    implementation rootProject.ext.dependencies.coil
+    implementation rootProject.ext.dependencies.paging
+    implementation rootProject.ext.dependencies.retrofit2
+
+    implementation project(":api")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

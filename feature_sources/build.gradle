@@ -38,9 +38,9 @@ android {
 dependencies {
     implementation rootProject.ext.dependencies.lifecycleViewmodelKtx
     implementation rootProject.ext.dependencies.lifecycleRuntimeKtx
+    implementation rootProject.ext.dependencies.kotlinxCoroutinesAndroid
     implementation rootProject.ext.dependencies.recyclerview
     implementation rootProject.ext.dependencies.legacySupportV4
-    implementation rootProject.ext.dependencies.kotlinxCoroutinesAndroid
     implementation rootProject.ext.dependencies.fragmentKtx
     implementation rootProject.ext.dependencies.dagger
     kapt rootProject.ext.dependencies.daggerCompiler

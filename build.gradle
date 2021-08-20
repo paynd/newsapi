@@ -40,7 +40,7 @@ allprojects {
 }
 
 ext {
-    compileSdkVersion = 30
+    compileSdkVersion = 31
     buildToolsVersion = "30.0.3"
     minSdkVersion = 26
     targetSdkVersion = 30
@@ -70,8 +70,9 @@ ext {
     dependencies.retrofit2KotlinxSerializationConverter = 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0'
     dependencies.retrofit2 = 'com.squareup.retrofit2:retrofit:2.9.0'
     dependencies.viewbindingpropertydelegate = 'com.github.kirich1409:viewbindingpropertydelegate:1.4.7'
-
-
+    dependencies.splashScreen = 'androidx.core:core-splashscreen:1.0.0-alpha01'
+    dependencies.coil = "io.coil-kt:coil:1.2.1"
+    dependencies.paging = "androidx.paging:paging-runtime-ktx:3.0.1"
 }
 
 task clean(type: Delete) {
