@@ -15,7 +15,7 @@ internal annotation class SourcesScope
     modules = [SourcesModule::class]
 )]
 interface SourcesComponent {
-    abstract fun inject(fragment: SourcesFragment)
+    fun inject(fragment: SourcesFragment)
 
     @Component.Builder
     interface Builder {
@@ -25,7 +25,7 @@ interface SourcesComponent {
 }
 
 @Module
-internal class SourcesModule
+internal abstract class SourcesModule
 
 /**
  * SourcesComponent dependencies holder interface

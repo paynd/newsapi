@@ -4,15 +4,15 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import name.paynd.android.newsapi.api.NewsService
 import name.paynd.android.newsapi.articles.model.Article
-import name.paynd.android.newsapi.articles.toArticle
+import name.paynd.android.newsapi.articles.model.toArticle
 import retrofit2.HttpException
-import javax.inject.Inject
 
-class ArticlesPagingSource @Inject constructor(
+class ArticlesPagingSource @AssistedInject constructor(
     private val newsService: NewsService,
-    private val sources: String
+    @Assisted(SOURCES) private val sources: String
 ) : PagingSource<Int, Article>() {
 
 
@@ -55,11 +55,12 @@ class ArticlesPagingSource @Inject constructor(
 
     @AssistedFactory
     interface Factory {
-        fun create(@Assisted("sources") sources: String): ArticlesPagingSource
+        fun create(@Assisted(SOURCES) sources: String): ArticlesPagingSource
     }
 
     companion object {
         const val INITIAL_PAGE_NUMBER = 1
+        const val SOURCES = "sources"
     }
 
 }

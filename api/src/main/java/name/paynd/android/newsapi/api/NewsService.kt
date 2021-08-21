@@ -9,12 +9,11 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.util.*
 
 interface NewsService {
 
     @GET("/v2/top-headlines/sources")
-    suspend fun sources(): Sources
+    suspend fun sources(): SourcesDto
 
     /**
      * @param pageSize The number of results to return per page. Default: 100. Maximum: 100.
@@ -30,7 +29,7 @@ interface NewsService {
             from = 1,
             to = MAX_PAGE_SIZE.toLong()
         ) pageSize: Int = DEFAULT_PAGE_SIZE,
-        @Query("sources") sources: String? = null,
+        @Query("sources") sources: String? = null
     ): Response<ArticlesResponseDto>
 
     companion object {
@@ -52,10 +51,14 @@ fun NewsService(apiKey: String): NewsService {
         }
         .build()
 
+    val json = Json(Json) {
+        ignoreUnknownKeys = true
+    }
+
     val retrofit = Retrofit.Builder()
         .baseUrl("https://newsapi.org/")
         .client(okHttpClient)
-        .addConverterFactory(Json.asConverterFactory(MediaType.get("application/json")))
+        .addConverterFactory(json.asConverterFactory(MediaType.get("application/json")))
         .build()
 
     return retrofit.create(NewsService::class.java)

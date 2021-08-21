@@ -42,8 +42,8 @@ dependencies {
     implementation rootProject.ext.dependencies.kotlinxCoroutinesAndroid
     implementation rootProject.ext.dependencies.fragmentKtx
     implementation rootProject.ext.dependencies.dagger
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt rootProject.ext.dependencies.daggerCompiler
+    implementation rootProject.ext.dependencies.legacySupportV4
     implementation rootProject.ext.dependencies.coreKtx
     implementation rootProject.ext.dependencies.appCompat
     implementation rootProject.ext.dependencies.material
@@ -51,8 +51,10 @@ dependencies {
     implementation rootProject.ext.dependencies.coil
     implementation rootProject.ext.dependencies.paging
     implementation rootProject.ext.dependencies.retrofit2
+    implementation rootProject.ext.dependencies.viewbindingpropertydelegate
 
     implementation project(":api")
+    implementation project(":core")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

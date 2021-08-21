@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import name.paynd.android.newsapi.api.Source
 import name.paynd.android.newsapi.sources.databinding.SourcesItemBinding
+import name.paynd.android.newsapi.sources.model.Source
 
-class SourcesAdapter : ListAdapter<Source, SourcesAdapter.ViewHolder>(SourceItemCallback()) {
+class SourcesAdapter(private val clickListener: (String) -> Unit) :
+    ListAdapter<Source, SourcesAdapter.ViewHolder>(SourceItemDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             SourcesItemBinding.inflate(
@@ -23,7 +24,6 @@ class SourcesAdapter : ListAdapter<Source, SourcesAdapter.ViewHolder>(SourceItem
         holder.bind(getItem(position))
     }
 
-
     inner class ViewHolder(private val binding: SourcesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -31,12 +31,14 @@ class SourcesAdapter : ListAdapter<Source, SourcesAdapter.ViewHolder>(SourceItem
             binding.itemTitle.text = source.name
             binding.itemDescription.text = source.description
             binding.itemUrl.text = source.url
+            binding.root.setOnClickListener {
+                clickListener.invoke(source.id)
+            }
         }
     }
-
 }
 
-private class SourceItemCallback : DiffUtil.ItemCallback<Source>() {
+private class SourceItemDiffCallback : DiffUtil.ItemCallback<Source>() {
     override fun areItemsTheSame(oldItem: Source, newItem: Source): Boolean {
         return oldItem == newItem
     }

@@ -3,16 +3,15 @@ package name.paynd.android.newsapi.api
 import androidx.annotation.IntRange
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.util.*
 
 @Serializable
-data class Sources(
-    val sources: List<Source>,
+data class SourcesDto(
+    val sources: List<SourceDto>,
     val status: String
 )
 
 @Serializable
-data class Source(
+data class SourceDto(
     val id: String,
     val name: String,
     val description: String,
@@ -32,10 +31,11 @@ data class ArticlesResponseDto(
 
 @Serializable
 data class ArticleDto(
-    val author: String,
-    val title: String,
-    val description: String,
-    val url: String,
-    val urlToImage: String,
-    @Serializable(with = DateSerializer::class) val publishedAt: Date,
+    @SerialName("title") val title: String = "",
+    @SerialName("url") val url: String? = null,
+    @SerialName("description") val description: String? = null,
+    @SerialName("author") val author: String? = null,
+    @SerialName("urlToImage") val urlToImage: String? = null,
+    @SerialName("publishedAt") val publishedAt: String? = null,
+    @SerialName("content") val content: String? = null,
 )
