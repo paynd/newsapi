@@ -19,9 +19,10 @@ import name.paynd.android.newsapi.articles.vm.ArticlesViewModel
 import name.paynd.android.newsapi.core.di.factories.VMFactory
 import javax.inject.Inject
 
-class ArticlesFragment @Inject constructor(
-    private val vmFactory: VMFactory
-) : Fragment(R.layout.articles_list) {
+class ArticlesFragment : Fragment(R.layout.articles_list) {
+
+    @Inject
+    lateinit var vmFactory: VMFactory
 
     private val binding: ArticlesListBinding by viewBinding()
     private val componentViewModel: ArticlesComponentViewModel by viewModels()

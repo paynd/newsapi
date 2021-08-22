@@ -5,6 +5,7 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import name.paynd.android.newsapi.api.NewsService
+import name.paynd.android.newsapi.core.di.factories.VMFactory
 import javax.inject.Scope
 
 
@@ -33,6 +34,7 @@ internal class ArticlesModule
  */
 interface ArticlesDeps {
     val newsService: NewsService
+    val vmFactory: VMFactory
 }
 
 /**

@@ -22,9 +22,10 @@ import javax.inject.Inject
 /**
  * A fragment representing a list of Items.
  */
-class SourcesFragment @Inject constructor(
-    private val vmFactory: VMFactory
-) : Fragment(R.layout.sources_list) {
+class SourcesFragment : Fragment(R.layout.sources_list) {
+
+    @Inject
+    lateinit var vmFactory: VMFactory
 
     private val sourcesViewModel: SourcesViewModel by viewModels { vmFactory }
     private val componentViewModel: SourcesComponentViewModel by viewModels()

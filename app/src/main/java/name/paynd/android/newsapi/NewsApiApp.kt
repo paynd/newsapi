@@ -3,7 +3,6 @@ package name.paynd.android.newsapi
 import android.app.Application
 import name.paynd.android.newsapi.articles.ArticlesDeps
 import name.paynd.android.newsapi.articles.ArticlesDepsProvider
-import name.paynd.android.newsapi.core.util.SetFragmentFactoryActivityCallback
 import name.paynd.android.newsapi.di.AppComponent
 import name.paynd.android.newsapi.di.DaggerAppComponent
 import name.paynd.android.newsapi.sources.SourcesDeps
@@ -16,14 +15,6 @@ class NewsApiApp : Application(), SourcesDepsProvider, ArticlesDepsProvider {
             .application(this)
             .apikey(BuildConfig.NEWS_API_KEY)
             .build()
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-
-        registerActivityLifecycleCallbacks(
-            SetFragmentFactoryActivityCallback(appComponent.fragmentFactory)
-        )
     }
 
     override val sourcesDeps: SourcesDeps = appComponent
