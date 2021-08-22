@@ -73,6 +73,7 @@ ext {
     dependencies.splashScreen = 'androidx.core:core-splashscreen:1.0.0-alpha01'
     dependencies.coil = "io.coil-kt:coil:1.2.1"
     dependencies.paging = "androidx.paging:paging-runtime-ktx:3.0.1"
+    dependencies.prettytime = "org.ocpsoft.prettytime:prettytime:4.0.4.Final"
 }
 
 task clean(type: Delete) {

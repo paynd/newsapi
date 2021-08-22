@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
+            android:textAppearance="?attr/textAppearanceHeadline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image"
             tools:text="bla-bla-bla" />
@@ -54,12 +54,22 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItemSecondary"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_author"
             tools:text="bla-bla-bla" />
 
+        <TextView
+            android:id="@+id/item_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_description"
+            tools:text="tomorrow" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
